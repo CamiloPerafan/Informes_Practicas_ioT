@@ -1,5 +1,7 @@
 # Practica 1
-**Por:** *Camilo Perafán*
+**Por:** *Cristian Camilo Perafán Erazo*
+
+**Asignatura:** *Electiva-IOT*
 
 # 1.Configuración del entorno: El estudiante deberá configurar su dispositivo de elección para ejecutar una imagen virtualizada de Linux, este será un suministro importante para el resto de prácticas.
 
