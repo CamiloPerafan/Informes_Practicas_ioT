@@ -22,6 +22,10 @@
 
 # 3.Autenticacion con JWT
 
+**instalacion nestjs-awt**
+
+![P3_3 intalacion _nestjs_jwt](https://user-images.githubusercontent.com/78938660/205167022-502be1b2-b0e3-4b92-82e2-b059a846467d.JPG)
+
 **Generar token**
 ![P3_3 Generar token](https://user-images.githubusercontent.com/78938660/205163355-88aac181-9660-47d6-9f69-eb303eba5344.jpg)
 
