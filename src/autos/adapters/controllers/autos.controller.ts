@@ -1,8 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { CarroService } from '../../domain/services/carro.service';
-
-
 import {Carro} from '../../domain/models/carro.model';
+import { AuthGuard } from '@nestjs/passport';
 
 const errReturn = (e: Error, message: string) => {
   return {
@@ -25,6 +24,7 @@ export class CarroController {
     }
   }
 
+  @UseGuards(AuthGuard('local')) //se adiciona esta anotacion
   @Post()
   crear(@Body() datos: Carro) {
     try{
