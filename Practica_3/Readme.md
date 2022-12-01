@@ -3,6 +3,10 @@
 
 **Asignatura:** *Electiva-IOT*
 
+**Fecha de realizacion:** *1/12/2022*
+
+**Link:** https://github.com/CamiloPerafan/Informes_Practicas_ioT.git
+
 # 1.Arquitectura hexagonal
 
 ![P3_1 Arquitectura hexagonal](https://user-images.githubusercontent.com/78938660/205162993-701c26a1-cf06-4310-b87b-eb7d0d810db8.jpg)
