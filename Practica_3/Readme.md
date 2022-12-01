@@ -5,7 +5,7 @@
 
 **Fecha de realizacion:** *1/12/2022*
 
-**Link:** https://github.com/CamiloPerafan/Informes_Practicas_ioT.git
+**Link:** https://github.com/CamiloPerafan/Informes_Practicas_ioT/tree/hexagonal
 
 # 1.Arquitectura hexagonal
 
