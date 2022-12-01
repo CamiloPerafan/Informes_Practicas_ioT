@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Inject, Param, Patch, Post, Put, UseGuar
 import { CarroService } from '../../domain/services/carro.service';
 import {Carro} from '../../domain/models/carro.model';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 const errReturn = (e: Error, message: string) => {
   return {
@@ -24,7 +25,7 @@ export class CarroController {
     }
   }
 
-  @UseGuards(AuthGuard('local')) //se adiciona esta anotacion
+  @UseGuards(AuthGuard('local')) //se adiciona esta anotacion para proteger el endpoint
   @Post()
   crear(@Body() datos: Carro) {
     try{
