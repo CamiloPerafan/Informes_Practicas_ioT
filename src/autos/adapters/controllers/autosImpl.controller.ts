@@ -4,6 +4,7 @@ import { CarroService } from '../../domain/services/carro.service';
 import {Carro} from '../../domain/models/carro.model';
 import {CarroController} from './autos.controller';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { CarroEntity } from 'src/autos/domain/entities/carro.entity';
 
 const errReturn = (e: Error, message: string) => {
   return {
@@ -28,7 +29,7 @@ export class CarroControllerImpl implements CarroController {
 
   @UseGuards(JwtAuthGuard) //se adiciona esta anotacion para proteger el endpoint
   @Post()
-  crear(@Body() datos: Carro) {
+  crear(@Body() datos: CarroEntity) {
     try{
       return this.automovilService.crear(datos);
     }
@@ -38,7 +39,7 @@ export class CarroControllerImpl implements CarroController {
   }
 
   @Put(":id")
-  modificar(@Body() datos: Carro, @Param('id') id: number) {
+  modificar(@Body() datos: CarroEntity, @Param('id') id: number) {
     try{
       return this.automovilService.modificar(id, datos);
     }

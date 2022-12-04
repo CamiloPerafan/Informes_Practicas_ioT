@@ -2,46 +2,42 @@ import { Injectable } from '@nestjs/common';
 // Importamos el modelo de jugador
 import { Carro } from '../models/carro.model';
 import {CarroService} from './carro.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { InsertResult, MongoRepository, UpdateResult } from 'typeorm';
+import { CarroEntity } from '../entities/carro.entity';
 
 @Injectable()
-export class CarroServiceImpl implements CarroService {
+export class CarroServiceImpl implements CarroService { 
 
-  // Como no hay base de datos aun empleamos una variable en memoria:
-  private carro: Carro[] = [{
-    marca: 'BMW',
-    modelo: 'm4',
-    capacidad: 4, 
-    team: 'camioneta'
-  }]
+  constructor(
+   @InjectRepository(CarroEntity)
+   private repository: MongoRepository<CarroEntity>,
+  ) {}
 
-  public listar() : Carro[] {
-    return this.carro
+  public async listar(): Promise<CarroEntity[]> {
+    return await this.repository.find();
   }
 
-  public crear(automovil: Carro): Carro {
-    this.carro.push(automovil);
-    return automovil;
+  public async crear(carroData: CarroEntity): Promise<InsertResult> {
+    const newCarro = await this.repository.insert(carroData);
+    return newCarro;
   }
 
-  public modificar(id: number, automovil: Carro): Carro {
-      this.carro[id] = automovil
-      return this.carro[id];
+  public async modificar(
+    id: number,
+    carroData: CarroEntity,
+  ): Promise<UpdateResult> {
+    const updatedCarro = await this.repository.update(id, carroData);
+    return updatedCarro
   }
 
-  public eliminar(id: number): boolean {
-    const totalAutomovilesAntes = this.carro.length;
-    this.carro = this.carro.filter((val, index) => index != id);
-    if(totalAutomovilesAntes == this.carro.length){
-      return false;
-    }
-    else{
-      return true;
-    }
+  public async eliminar(id: number): Promise<boolean> {
+    const deleteResult = await this.repository.delete(id);
+    return deleteResult.affected > 0;
   }
 
-  public cambiarCapacidad(id: number, capa: number): Carro {
-    this.carro[id].capacidad = capa;
-    return this.carro[id];
+  public async cambiarCapacidad(id: number, capa: number): Promise<UpdateResult> {
+    const updatedCarro = await this.repository.update(id, { capacidad: capa });
+    return updatedCarro;
   }
-
 }

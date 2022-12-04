@@ -1,10 +1,12 @@
 import { Carro } from "../models/carro.model";
+import { InsertResult, UpdateResult } from 'typeorm';
+import { CarroEntity } from '../entities/carro.entity';
 
 export interface CarroService {
 
-    listar() : Carro[];
-    crear(automovil: Carro): Carro;
-    modificar(id: number, automovil: Carro): Carro;
-    eliminar(id: number): boolean;
-    cambiarCapacidad(id: number, capa: number): Carro;
+    listar(): Promise<CarroEntity[]>;
+    crear(player: CarroEntity): Promise<InsertResult>;
+    modificar(id: number, carroData: CarroEntity): Promise<UpdateResult>;
+    eliminar(id: number): Promise<boolean>;
+    cambiarCapacidad(id: number, capacidad: number): Promise<UpdateResult>;
 }
